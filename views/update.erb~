@@ -1,0 +1,9 @@
+
+<form action"/update/#{@cut.id}" method="post">
+	<input type="hidden" name="_method" type="hidden" value="patch">
+	<input type="text" value="<%=h @cut.title %>" />
+	<input type="textarea" value="<%=h @cut.body %>" />
+	<button type="submit" name="update">Update</button>
+	 
+  </form>
+

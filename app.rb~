@@ -26,3 +26,28 @@ post "/new" do
   redirect "/"
 
 end
+
+delete "/delete/:id" do
+ Cut.delete params[:id]
+ redirect "/"
+end
+
+
+patch "update/:id" do
+@cut = Cut.find params[:id]
+@cut.title = params[:title]
+@cut.body = params[:body]
+@cut.save
+redirect "/"
+end
+
+get "/update/:id" do
+  @cut = Cut.find params[:id]
+  erb :update
+end
+
+
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end

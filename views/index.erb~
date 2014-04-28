@@ -9,11 +9,5 @@
 	   <button type="submit" name="ok">Delete</button>
 	  </form>
 	  </li>
-
-	   <li>
-
-	  <a href="/update/<%= x.id %>">Edit</a>
-
-	  </li>
   </ul>
 <% end %>
