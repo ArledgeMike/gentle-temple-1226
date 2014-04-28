@@ -9,5 +9,20 @@ end
 
 
 get "/" do
-  "page one kid"
+  @cut = Cut.all
+  if !@cut.empty?
+    erb :index
+  else
+    erb :new
+  end
+end
+
+get "/new" do
+erb :new
+end
+
+post "/new" do
+  @cut = Cut.create(:title => params[:title], :body => params[:body])
+  redirect "/"
+
 end
