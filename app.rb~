@@ -1,0 +1,15 @@
+require 'sinatra'
+require 'sinatra/activerecord'
+require './environments'
+
+
+class Create_Cut < ActiveRecord::Base
+
+end
+
+
+get '/' do 
+
+"page one kid"
+
+end
