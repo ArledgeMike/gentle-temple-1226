@@ -1,5 +1,5 @@
 configure :development do
-	set :database, 'postgres://postgres:Psirus2050@localhost:5432/postgres'
+	set :database, 'postgres://postgres:psirus2050@localhost:5432/postgres'
 	set :show_exceptions, true
 end
 
