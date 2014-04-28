@@ -9,5 +9,5 @@ end
 
 
 get "/" do
-  @posts = Cut.find(1).title
+  "page one kid"
 end
