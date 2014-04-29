@@ -11,20 +11,24 @@ end
 get "/" do
   @cut = Cut.all
   if !@cut.empty?
-    erb :index
+    erb :index, :layout => :base
   else
-    erb :new
+    erb :new, :layout => :base
   end
 end
 
 get "/new" do
-erb :new
+  erb :new
+end
+
+get "/cut_that/:id" do
+@id = params[:id]
+erb :cut
 end
 
 post "/new" do
   @cut = Cut.create(:title => params[:title], :body => params[:body])
   redirect "/"
-
 end
 
 delete "/delete/:id" do

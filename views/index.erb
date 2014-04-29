@@ -1,19 +1,11 @@
+<div id="index" class="container">
+	<div id="results">
+	<h1>Where should we trim the fat?</h1>
+<select id="cut" name="id">
+	<option>What's on the block?</option>
 <% @cut.each do |x| %>
-  <ul>
-	  <li><%=h x.title %></li>
-	  <li><%=h x.body %></li>
-	  <li><%=h x.created_at %></li>
-	  <li>
-	  <form action="/delete/<%= x.id %>" method="Post">
-           <input name="_method" type="hidden" value="delete"/>
-	   <button type="submit" name="ok">Delete</button>
-	  </form>
-	  </li>
-
-	   <li>
-
-	  <a href="/update/<%= x.id %>">Edit</a>
-
-	  </li>
-  </ul>
+  <option value = <%= x.body %> > <%= x.title %></option>
 <% end %>
+</select>
+</div>
+</div>
