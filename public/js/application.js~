@@ -8,7 +8,7 @@ $(document).foundation();
 		success:function(data){
 			console.log(data);
 			
-			$('.results').slideUp(function(){
+			$('#results').slideUp(function(){
 					$(this).html("").append('<div class="results">' + data + '</div>').slideDown();
 			});
 			

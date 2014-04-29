@@ -8,13 +8,17 @@ class Cut < ActiveRecord::Base
 end
 
 
-set :username,'Bond'
-set :token,'shakenN0tstirr3d'
-set :password,'007'
-
 helpers do
-  def admin? ; request.cookies[settings.username] == settings.token ; end
-  def protected! ; halt [ 401, 'Not Authorized' ] unless admin? ; end
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+  end
 end
 
 get "/" do
@@ -37,7 +41,6 @@ get "/cut_that/:id" do
 end
 
 get "/list" do
-  protected!
   @cut = Cut.all
   erb :list
 end
@@ -48,7 +51,6 @@ post "/new" do
 end
 
 get "/delete/:id" do
-  protected!
   @cut = Cut.find(params[:id])
   erb :delete
 end
@@ -59,7 +61,6 @@ delete "/delete/:id" do
 end
 
 get "/update/:id" do
-  protected!
   @cut = Cut.find params[:id]
   erb :update
 end
@@ -70,24 +71,6 @@ patch "/update/:id" do
   @cut.body = params[:body]
   @cut.save
   redirect "/"
-end
-
-get "/admin" do
-erb :admin
-end
-
-post '/login' do
-  if params['username']==settings.username&&params['password']==settings.password
-    response.set_cookie(settings.username,settings.token) 
-    redirect '/'
-  else
-    "Username or Password incorrect"
-  end
-end
-
-get "/logout" do 
- response.set_cookie(settings.username, false)
- redirect '/' 
 end
 
 helpers do

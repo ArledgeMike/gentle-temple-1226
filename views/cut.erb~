@@ -1,2 +1,4 @@
+<div id="cut" class="container">
 <h1>We found a few parts to trim</h1>
 <a href="https://www.facebook.com/browse/friended_fans_of/?page_id=<%=@id%>" class="button alert" id="results_btn">Click Here</a>
+</div>
