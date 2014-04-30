@@ -1,9 +1,0 @@
-	<div id="results">
-	<h1>Where should we trim the fat?</h1>
-<select id="cut" name="id">
-	<option>What's on the block?</option>
-<% @cut.each do |x| %>
-  <option value = <%= x.body %> > <%= x.title %></option>
-<% end %>
-</select>
-</div>

@@ -1,8 +1,10 @@
 
-<form action"/update/#{@cut.id}" method="post">
+<form action"/logged_in/update/#{@cut.id}" method="post">
 	<input type="hidden" name="_method" type="hidden" value="patch">
+	<label>Selection Title:</label>
 	<input type="text" name="title" value="<%=h @cut.title %>" />
-	<input type="textarea" name="body" value="<%=h @cut.body %>" />
+	<label>FB_ID</label>
+	<input type="text" name="body" value="<%=h @cut.body %>" />
 	<button type="submit" name="update">Update</button>
 	 
   </form>

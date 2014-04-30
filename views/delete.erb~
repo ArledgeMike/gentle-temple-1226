@@ -1,9 +1,0 @@
-
-  <% @cut.each do |x| %>
-	  <form action="/delete/<%= x.id %>" method="post">	    
-    <input type="text" value= <%= x.title %> />
-    <input type="text" value= <%= x.body %> />
-    <button type="submit" name="_method" value="delete" >Delete</button>
-</form>
-  <% end %>    
-
